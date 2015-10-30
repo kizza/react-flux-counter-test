@@ -1,0 +1,4 @@
+module.exports = {
+  INCREMENT: "INCREMENT_ACTION",
+  DECREMENT: "DECREMENT_ACTION"
+}

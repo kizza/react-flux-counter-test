@@ -1,0 +1,46 @@
+{
+  "name": "counter-test-boilerplate",
+  "version": "0.0.1",
+  "description": "Javascript test boiler plate",
+  "license": "MIT",
+  "main": "server.js",
+  "author": "EverydayHero",
+  "scripts": {
+    "setup": "npm install && npm run build && npm test",
+    "build": "npm run scripts",
+    "build-dev": "npm run scripts-dev",
+    "scripts": "browserify ./src/application.js | uglifyjs -cm > ./public/scripts/application.js",
+    "scripts-dev": "browserify ./src/application.js > ./public/scripts/application.js",
+    "start": "node server.js",
+    "test": "NODE_ENV=development node_modules/.bin/jest",
+    "test-windows": "node_modules/.bin/jest",
+    "watch": "node_modules/.bin/watch-run -p 'src/**' npm run build-dev"
+  },
+  "devDependencies": {
+    "browserify": "~2.36.0",
+    "uglify-js": "~2.4.13",
+    "jest-cli": "~0.6.0",
+    "reactify": "~0.14.0",
+    "react": "~0.11.2",
+    "react-tools": "~0.11.1"
+  },
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/preprocessor.js",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
+  },
+  "dependencies": {
+    "compression": "~1.0.8",
+    "express": "~4.4.5",
+    "flux": "^2.1.1",
+    "morgan": "~1.1.1",
+    "object-assign": "^1.0.0",
+    "watch-run": "^1.2.2"
+  }
+}
